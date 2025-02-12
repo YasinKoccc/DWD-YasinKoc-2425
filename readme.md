@@ -1,7 +1,7 @@
 # Dynamic Web Development
 
 - Academiejaar: 2024 - 2025
-- Opleiding: Toegepaste informatica
+- Opleiding: Toegepaste Informatica
 - Klasgroep: 1TI7
-- Naam: Yasin Koc
+- Naam: Yasin Koç
 
