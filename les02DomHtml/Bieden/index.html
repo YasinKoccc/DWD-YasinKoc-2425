@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bieden!</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <h1>Prachtige vaas! Doe een bod</h1>
+
+    <div class="container">
+        <img src="img/vaas.jpg" alt="Prachtige Vaas">
+        <form id="bidForm">
+            <div class="form-group">
+                <label for="bidderName">Naam bieder:</label>
+                <input type="text" id="bidderName" name="bidderName" required>
+            </div>
+            <div class="form-group">
+                <label for="bidAmount">Bod:</label>
+                <input type="text" id="bidAmount" name="bidAmount" required>
+            </div>
+            <button type="submit">Plaats bod</button>
+            <div id="message">Er is nog geen bod uitgebracht.</div>
+        </form>
+    </div>
+
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
