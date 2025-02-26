@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tekststijl Configuratie</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="config-container">
+        <label>Lettergrootte:
+            <input type="range" id="fontSize" min="10" max="30" value="14">
+            <span id="fontSizeValue">14px</span>
+        </label>
+
+        <label>Kleur: <input type="color" id="textColor" value="#000000"></label>
+
+        <label><input type="checkbox" id="bold"> Vet</label>
+        <label><input type="checkbox" id="italic"> Schuin</label>
+        <label><input type="checkbox" id="uppercase"> Hoofdletters</label>
+
+        <button onclick="applyStyle(1)">Stijl 1</button>
+        <button onclick="applyStyle(2)">Stijl 2</button>
+        <button onclick="applyStyle(3)">Stijl 3</button>
+    </div>
+
+    <div class="text-container">
+        <p id="text">One advanced diverted domestic sex repeated bringing you old. Possible procured her trifling
+            laughter thoughts property she met way.</p>
+    </div>
+
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
