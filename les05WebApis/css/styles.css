@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 50px;
+    background-color: #ffebcd;
+}
+h1 {
+    color: #d63384;
+    font-size: 2.5em;
+}
+#datepicker {
+    font-size: 1.2em;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid #d63384;
+    border-radius: 5px;
+}
+button {
+    background-color: #ff4081;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+button:hover {
+    background-color: #e91e63;
+}
+#resultaat {
+    margin-top: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+.feestdag {
+    color: green;
+    animation: blink 1s infinite;
+}
+.geen-feestdag {
+    color: red;
+}
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
