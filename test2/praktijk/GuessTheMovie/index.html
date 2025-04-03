@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Memory Trainer</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header>
+        <form id="login-form">
+            <p>vul je naam in om te starten:</p>
+            <input type="text" id="login-name" placeholder="Naam">
+            <button type="submit">Start</button>
+            <p id="login-error" class="error"></p>
+        </form>
+    </header>
+    <main class="container hide">
+        <h1>Guess the Movie</h1>
+        <p id="user-info"></p>
+        <div id="nextcontainer">
+            <button type="button" id="next-btn">volgende film</button>
+            <div id="emoji-display" class="emoji-box"></div>
+        </div>
+        <ul id="movie-list">
+            <li class="movie-item" data-emojis="🚢 🧊 💔">Titanic <span>-</span></li>
+            <li class="movie-item" data-emojis="🏹 👧🔥">The Hunger Games <span>-</span></li>
+            <li class="movie-item" data-emojis="🦇 🕶️ 🏙️">The Dark Knight <span>-</span></li>
+            <li class="movie-item" data-emojis="🦁 👑">The Lion King <span>-</span></li>
+            <li class="movie-item" data-emojis="🤖 💔 🌍">WALL·E <span>-</span></li>
+        </ul>
+        <p>Juist: <span id="num-right">0</span> | Fout: <span id="num-wrong">0</span></p>
+
+    </main>
+    <footer>
+        <button type="button" id="toggle-theme">Toggle thema</button>
+    </footer>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NumbersAPI</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <h1>NumbersAPI</h1>
+    <div class="form">
+        <input type="text" id="inpNumber" placeholder="Geef een waarde in...">
+        <select id="selType">
+            <option value="trivia">Trivia</option>
+            <option value="math">Math</option>
+            <option value="year">Year</option>
+            <option value="date">Date (MM/DD)</option>
+        </select>
+        <button type="button" id="btnFetch">Toon weetje</button>
+        <button type="button" id="btnRandom">Verrassing</button>
+    </div>
+    <div id="facts" class="fact-box"></div>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
