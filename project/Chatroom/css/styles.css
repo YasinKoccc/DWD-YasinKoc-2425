@@ -27,9 +27,38 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #ffffff;
-    overflow-y: auto;
+    overflow-y: auto; /* Enable vertical scrolling for comments */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
     padding: 10px;
     margin-bottom: 20px;
+    position: relative; /* Ensure proper stacking context for tooltips */
+    box-sizing: border-box; /* Ensure padding is included in the height */
+    z-index: 1; /* Lower stacking context for the chat area */
+}
+
+/* Tooltip styling specific to chat area */
+.chat-area .email-tooltip {
+    visibility: hidden;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: fixed; /* Use fixed positioning to escape the chat area */
+    bottom: auto; /* Reset bottom positioning */
+    top: 0; /* Adjust as needed to position above the chat area */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 9999; /* Ensure it appears in the foreground */
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.7rem; /* Slightly smaller font size */
+}
+
+.chat-area .profile-container:hover .email-tooltip {
+    visibility: visible;
+    opacity: 1;
 }
 
 /* Divider styling */
@@ -107,11 +136,20 @@ body {
 }
 
 .profile-pic {
-    width: 40px; /* Adjust size to match the demo */
-    height: 40px;
-    border-radius: 50%;
+    width: 30px;
+    height: 30px;
     object-fit: cover;
-    margin-top: 0.2rem; /* Adjust vertical alignment */
+    margin-top: 0.2rem;
+}
+
+/* Circle shape */
+.circle-shape {
+    border-radius: 50%;
+}
+
+/* Square shape */
+.square-shape {
+    border-radius: 0; /* No border needed for square shapes */
 }
 
 .message-content {
@@ -130,8 +168,9 @@ body {
     color: #333;
 }
 
+/* Remove timestamp styling */
 .timestamp {
-    color: #6c757d;
+    display: none;
 }
 
 .message-text {
@@ -207,27 +246,27 @@ body {
 
 /* Tooltip styling */
 .profile-container {
-    position: relative;
+    position: relative; /* Ensure the tooltip is positioned relative to this container */
     display: inline-block;
+    z-index: 2; /* Ensure the tooltip is above the chat area */
 }
 
 .email-tooltip {
     visibility: hidden;
-    width: auto;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #333;
     color: #fff;
     text-align: center;
-    border-radius: 6px;
+    border-radius: 5px;
     padding: 5px;
-    position: absolute;
-    z-index: 10;
-    bottom: 100%; /* Push it even further up */
+    position: absolute; /* Position relative to the profile-container */
+    bottom: 120%; /* Position above the profile picture */
     left: 50%;
     transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 9999; /* Ensure it appears in the foreground */
     opacity: 0;
     transition: opacity 0.3s;
-    font-size: 0.7em; /* Slightly smaller font size to match the demo */
-    white-space: nowrap;
+    font-size: 0.7rem; /* Slightly smaller font size */
 }
 
 .profile-container:hover .email-tooltip {
