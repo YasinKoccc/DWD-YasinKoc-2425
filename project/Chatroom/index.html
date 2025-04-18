@@ -5,29 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Chatroom</title>
-    <link rel="stylesheet" href="css/styles.css">
-
-    <!-- Add this line to your HTML head -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <h1 class="title">Simple Chatroom</h1>
-    <div class="chat-area">
-        <!-- Chat messages will appear here -->
-    </div>
-    <hr class="divider">
-    <form class="comment-form" novalidate>
-        <label for="email" class="email-label">YOUR EMAIL *</label>
-        <input type="email" id="email" class="email-input" required>
-        <label for="comment" class="comment-label">YOUR COMMENT *</label>
-        <textarea id="comment" class="comment-input" required></textarea>
+    <h1 class="chat-title">SIMPLE CHATROOM</h1>
+    <div class="chat-messages" id="chatMessages"></div>
+
+    <form class="chat-form" id="chatForm" novalidate>
+        <div class="form-group">
+            <label for="email">YOUR EMAIL *</label>
+            <input type="email" id="email" placeholder="Enter your email">
+            <span id="emailError" class="error-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="comment">YOUR COMMENT *</label>
+            <textarea id="comment" placeholder="Add a comment"></textarea>
+            <span id="commentError" class="error-message"></span>
+        </div>
+
         <div class="button-container">
-            <button type="submit" class="submit-button">ADD COMMENT</button>
+            <button type="submit">ADD COMMENT</button>
         </div>
     </form>
+    <div class="modal-overlay" id="gifModalOverlay">
+        <div class="modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <h2>Choose a GIF for your word</h2>
+            <div class="modal-input-section">
+                <p id="searchQueryDisplay" class="modal-search-query"></p>
+                <label for="modalEmail">Email</label>
+                <input type="email" id="modalEmail" placeholder="Enter your email">
+                <span id="modalEmailError" class="error-message"></span>
+            </div>
 
-    <script src="js/scripts.js"></script>
+            <div id="gifResults" class="gif-results"></div>
+
+            <!-- Modal section below the GIFs -->
+            <div class="modal-buttons">
+                <button type="button" id="backButton" class="modal-button">BACK</button>
+                <button type="button" id="selectButton" class="modal-button">SELECT</button>
+            </div>
+
+        </div>
+    </div>
+
+    <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+
+    <script src="js/script.js"></script>
 </body>
 
 </html>
