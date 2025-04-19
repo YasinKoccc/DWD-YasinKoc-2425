@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Chatroom</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-    
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -43,6 +41,10 @@
 
             <div id="gifResults" class="gif-results"></div>
 
+            <div class="gif-navigation">
+                <button type="button" id="prevGifs" class="nav-button">⬅️ Previous</button>
+                <button type="button" id="nextGifs" class="nav-button">Next ➡️</button>
+            </div>
             <!-- Modal section below the GIFs -->
             <div class="modal-buttons">
                 <button type="button" id="backButton" class="modal-button">BACK</button>

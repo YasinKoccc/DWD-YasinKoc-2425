@@ -1,4 +1,3 @@
-/* General Styling */
 body {
     font-family: sans-serif;
     background-color: #e9edf2;
@@ -34,7 +33,6 @@ button:focus {
     outline-offset: 2px;
 }
 
-/* Chat Title */
 .chat-title {
     text-align: center;
     margin-top: 2rem;
@@ -49,7 +47,6 @@ button:focus {
     margin: 0 auto;
 }
 
-/* Chat Messages */
 #chatMessages {
     display: flex;
     flex-direction: column;
@@ -59,24 +56,23 @@ button:focus {
 }
 
 .chat-messages {
-    background-color: #ffffff;
+    background-color: #fff;
     border-radius: 10px;
     width: 90%;
     max-width: 700px;
     padding: 1rem;
     margin: 0 auto 1rem auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgb(0 0 0 / 10%);
     height: 400px;
     overflow-y: auto;
 }
 
-/* Update the message content alignment */
 .message {
     display: flex;
-    align-items: flex-start; /* Ensures alignment starts from top */
+    align-items: flex-start;
     gap: 8px;
     margin-bottom: 5px;
-    padding: 8px 10px 5px 5px; /* Increased top padding from 5px to 8px */
+    padding: 8px 10px 5px 5px;
     position: relative;
 }
 
@@ -84,22 +80,21 @@ button:focus {
     margin-bottom: 10px;
 }
 
-/* Fine-tune avatar alignment */
 .message img {
     width: 36px;
     height: 36px;
     object-fit: cover;
     margin-right: 8px;
-    margin-top: 0.5em; /* Fine-tune vertical alignment */
-    align-self: flex-start; /* Ensure alignment stays at top */
+    margin-top: 0.5em;
+    align-self: flex-start;
 }
 
 .message img[alt="Profile"] {
-    margin-top: 0.4em; /* Slightly increased from 0.3em */
+    margin-top: 0.4em;
 }
 
 .message-content {
-    display: inline-flex; /* Changed from block */
+    display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
     max-width: 100%;
@@ -109,29 +104,26 @@ button:focus {
     white-space: pre-line;
 }
 
-/* Specifically target text messages (paragraphs) */
 .message-content p {
     margin: 0;
-    padding-top: 0.4em; /* Increased from 0.3em */
-    line-height: 1.4; /* Improves text readability */
-    transform: translateY(2px); /* Adds slight vertical shift */
+    padding-top: 0.4em;
+    line-height: 1.4;
+    transform: translateY(2px);
 }
 
-/* Keep GIF alignment as is */
 .message-content .chat-gif {
-    max-width: 300px; /* Increased from previous size */
+    max-width: 300px;
     width: auto;
     max-height: 300px;
     height: auto;
     display: block;
-    margin: 10px 0; /* Maintain current GIF spacing */
+    margin: 10px 0;
     border-radius: 8px;
     border: 1px solid #eee;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transform: none; /* Explicitly reset transform for GIFs */
+    box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+    transform: none;
 }
 
-/* Avatar Shapes */
 .circle {
     border-radius: 50%;
 }
@@ -140,7 +132,6 @@ button:focus {
     border-radius: 0;
 }
 
-/* Delete Button */
 .delete-button {
     cursor: pointer;
     margin-left: auto;
@@ -155,14 +146,13 @@ button:focus {
     display: inline;
 }
 
-/* Form Styling */
 .chat-form {
     width: 90%;
     max-width: 700px;
-    background-color: #ffffff;
+    background-color: #fff;
     border-radius: 10px;
     padding: 1rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgb(0 0 0 / 10%);
 }
 
 .form-group {
@@ -174,7 +164,6 @@ textarea {
     resize: vertical;
 }
 
-/* Error Messages */
 .error-message {
     display: none;
     color: red;
@@ -193,7 +182,6 @@ textarea.error {
     border: 1px solid red;
 }
 
-/* Buttons */
 .button-container {
     text-align: right;
 }
@@ -213,7 +201,6 @@ button:hover {
     background-color: #c0c0c0;
 }
 
-/* Modal Styling */
 #gifModal {
     position: fixed;
     top: 50%;
@@ -223,12 +210,12 @@ button:hover {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: none; /* Initially hidden */
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
+    display: none;
 }
 
 #gifModal.visible {
-    display: block; /* Show modal when visible class is added */
+    display: block;
 }
 
 .modal-close {
@@ -239,69 +226,64 @@ button:hover {
     cursor: pointer;
 }
 
-/* Modal Overlay */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(0 0 0 / 50%);
     display: none;
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
 
-/* Prevent body scrolling when modal is open */
 body.modal-open {
     position: fixed;
     width: 100%;
     overflow-y: scroll;
 }
 
-/* Modal Content Styling */
 .modal-content {
     background-color: white;
     padding: 10px;
     border-radius: 12px;
-    width: 65%;            /* Verkleind van 85% naar 65% */
-    max-width: 600px;      /* Optioneel, limiet voor bredere schermen */
-    max-height: 600px;     /* Grotere hoogte */
-    overflow: hidden;      /* Voorkomt dat content erbuiten valt */
+    width: 65%;
+    max-width: 600px;
+    max-height: 670px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-/* Inner spacing for modal sections */
 .modal-content > div {
-    margin: 15px 0; /* Space between sections */
+    margin: 15px 0;
 }
 
-/* Title spacing */
 .modal-content h2 {
     margin-bottom: 20px;
 }
 
 .modal-overlay.visible {
-    display: block; /* Show overlay when modal is visible */
+    display: block;
 }
+
 .modal-input-section {
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
 .modal-search-query {
-    margin: 4px 0; /* nog strakker rondom de tekst */
+    margin: 4px 0;
 }
 
 .gif-item.selected {
-    box-shadow: 0 0 30px blue; /* Blue box-shadow for selected GIF */
-    outline: none; /* Remove default outline */
+    box-shadow: 0 0 30px blue;
+    outline: none;
 }
 
-/* Modal buttons styles */
 .modal-buttons {
     display: flex;
     justify-content: flex-end;
@@ -318,41 +300,41 @@ body.modal-open {
 }
 
 #backButton {
-    background-color: gray; /* Gray color for BACK button */
+    background-color: gray;
 }
 
 #backButton:hover {
-    background-color: #d3d3d3; /* Lighter gray on hover */
+    background-color: #d3d3d3;
 }
 
 #selectButton {
-    background-color: #007bff; /* Blue color for SELECT button */
+    background-color: #007bff;
     color: white;
 }
 
 #selectButton:hover {
-    background-color: #d3d3d3; /* Gray hover color for SELECT button */
+    background-color: #d3d3d3;
 }
 
-/* GIF Modal Grid Layout */
 .gif-results {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    grid-auto-rows: 100px; /* 2 rows of 100px height each */
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 120px;
     gap: 10px;
     justify-items: center;
     align-items: center;
     width: 100%;
-    height: 220px; /* Enough to show 2 rows comfortably */
-    overflow-y: auto; /* Enables vertical scrolling */
-    padding-right: 5px; /* Prevent scrollbar overlap */
+    height: 300px;
+    overflow-y: auto;
+    padding-right: 5px;
 }
 
 .gif-results::-webkit-scrollbar {
     width: 6px;
 }
+
 .gif-results::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgb(0 0 0 / 20%);
     border-radius: 3px;
 }
 
@@ -369,9 +351,9 @@ body.modal-open {
 }
 
 .gif-item img {
-    width: 60px;       /* Adjust width to fit all GIFs */
-    height: 60px;      /* Adjust height to maintain aspect ratio */
-    object-fit: cover; /* Maintain aspect ratio */
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
     border-radius: 4px;
     transition: transform 0.2s;
 }
@@ -380,21 +362,42 @@ body.modal-open {
     transform: scale(1.03);
 }
 
-.chat-gif {
-    width: 200px;
-    height: 200px;
-    object-fit: cover; /* Zorgt ervoor dat de inhoud van de afbeelding proportioneel wordt weergegeven */
-    max-width: 200px;
-    max-height: 200px;
+.nav-button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
 }
 
-/* Input field spacing */
+.nav-button:hover {
+    background-color: #333;
+}
+
+.gif-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.chat-gif {
+    max-width: 300px;
+    max-height: 300px;
+    object-fit: contain;
+    display: block;
+    margin: 5px 0;
+}
+
 #modalEmail {
     margin: 10px 0 15px 0;
     padding: 10px;
 }
 
-/* Dark Mode */
 body.dark-mode {
     background-color: #1e1e1e;
     color: #f0f0f0;
@@ -447,15 +450,9 @@ body.dark-mode .error {
 }
 
 body.dark-mode .modal-overlay {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgb(0 0 0 / 70%);
 }
 
-body.dark-mode .modal-content {
-    background-color: #2c2c2c;
-    color: #f0f0f0;
-}
-
-/* Theme Toggle Button */
 .theme-toggle {
     position: fixed;
     bottom: 20px;
@@ -468,7 +465,7 @@ body.dark-mode .modal-content {
     cursor: pointer;
     background-color: #f0f0f0;
     color: #333;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 8px rgb(0 0 0 / 20%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -481,8 +478,8 @@ body.dark-mode .theme-toggle {
     color: #f0f0f0;
 }
 
-/* Responsiveness */
-@media (max-width: 400px) {
+@media (width <= 400px) {
+
     .chat-messages {
         width: 100%;
         padding: 0.5rem;
@@ -518,7 +515,8 @@ body.dark-mode .theme-toggle {
     }
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
+
     .chat-messages {
         width: 90%;
         max-width: 600px;
