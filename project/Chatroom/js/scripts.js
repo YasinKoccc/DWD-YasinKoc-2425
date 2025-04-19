@@ -16,12 +16,12 @@ const typingBar = document.querySelector('.typing-bar span');
 const API_KEY = 'W1cctClRVfFubkFgtfzQvwX2WblD1hpY';
 
 function showModal() {
-    document.querySelector('#gifModalOverlay').style.display = 'flex';
+    document.querySelector('#gifModalOverlay').classList.add('show');
     document.body.classList.add('modal-open');
 }
 
 function hideModal() {
-    document.querySelector('#gifModalOverlay').style.display = 'none';
+    document.querySelector('#gifModalOverlay').classList.remove('show');
     document.body.classList.remove('modal-open');
 }
 
@@ -36,12 +36,14 @@ function validateEmail(email) {
 function setError(inputElement, message) {
     const errorMessage = inputElement.nextElementSibling;
     errorMessage.textContent = message;
+    errorMessage.classList.add('show');
     inputElement.classList.add('error');
 }
 
 function clearError(inputElement) {
     const errorMessage = inputElement.nextElementSibling;
-    errorMessage.textContent = '';
+    errorMessage.textContent = ''; // Wis de foutmeldingstekst
+    errorMessage.classList.remove('show');
     inputElement.classList.remove('error');
 }
 
@@ -55,7 +57,7 @@ modalEmailInput.addEventListener('input', () => {
 
 emailInput.addEventListener('input', () => {
     if (emailInput.value.trim() && validateEmail(emailInput.value.trim())) {
-        clearError(emailInput);
+        clearError(emailInput); // Wis de foutmelding realtime
     }
 });
 
@@ -70,11 +72,6 @@ modalEmailInput.addEventListener('input', () => {
         clearError(modalEmailInput);
     }
 });
-
-function getUsernameFromEmail(email) {
-    const username = email.split('@')[0];
-    return username;
-}
 
 function getGravatarUrl(email) {
     const emailHash = email.trim().toLowerCase();
@@ -104,17 +101,16 @@ function handleGifSelection(gifUrl) {
         shape: Math.random() < 0.5 ? 'circle' : 'square'
     };
 
-    const messageHTML = `
+        const messageHTML = `
         <div class="message">
             <img src="${message.gravatarUrl}" 
                  alt="Profile" 
                  class="${message.shape}" 
                  title="${message.email}">
             <div class="message-content">
-                <img src="${gifUrl.replace('200.gif', 'giphy.gif')}" 
-                     alt="GIF" 
-                     class="chat-gif"
-                     style="max-width: 300px; max-height: 300px;">
+                <img src="${gifUrl.replaceAll('200.gif', 'giphy.gif')}" 
+                    alt="GIF" 
+                    class="chat-gif">
             </div>
             <span class="delete-button">🗑️</span>
         </div>
@@ -144,14 +140,14 @@ chatForm.addEventListener('submit', function (e) {
     const email = emailInput.value.trim();
     const comment = commentInput.value.trim();
 
-    if (!email) {
+       if (!email) {
         setError(emailInput, 'Please enter your email address');
         isValid = false;
     } else if (!validateEmail(email)) {
         setError(emailInput, 'Please enter a valid email address');
         isValid = false;
     } else {
-        clearError(emailInput);
+        clearError(emailInput); // Wis de foutmelding als de invoer geldig is
     }
 
     if (!comment) {
@@ -208,11 +204,10 @@ function loadMessages() {
 
         savedMessages.forEach((msg) => {
             const content = msg.gifUrl
-                ? `<img src="${msg.gifUrl}" 
-                         alt="GIF" 
-                         class="chat-gif" 
-                         style="max-width: 300px; max-height: 300px;">` // Ensure consistent size
-                : `<p>${msg.comment}</p>`;
+            ? `<img src="${msg.gifUrl}" 
+                    alt="GIF" 
+                    class="chat-gif">`
+            : `<p>${msg.comment}</p>`;
 
             messagesHTML += `
                 <div class="message" data-id="${msg.id}">
@@ -261,11 +256,7 @@ function deleteMessage(messageId) {
 
 function initializeTheme() {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-    } else {
-        document.body.classList.remove('dark-mode');
-    }
+    document.body.classList.toggle('dark-mode', savedTheme === 'dark');
     updateThemeButton();
 }
 
@@ -280,8 +271,8 @@ function updateThemeButton() {
 
 function toggleTheme() {
     document.body.classList.toggle('dark-mode');
-    const isDark = document.body.classList.contains('dark-mode');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    localStorage.setItem('theme', 
+        document.body.classList.contains('dark-mode') ? 'dark' : 'light');
     updateThemeButton();
 }
 
@@ -306,24 +297,21 @@ function openGifModal(word) {
     document.querySelector('#prevGifs').disabled = true;
 }
 
-function fetchGifs(query, page) {
+async function fetchGifs(query, page) {
     const offset = page * 8;
     const gifApiUrl = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${encodeURIComponent(query)}&limit=8&offset=${offset}`;
 
-    fetch(gifApiUrl)
-        .then(response => {
-            if (!response.ok) throw new Error('Network response was not ok');
-            return response.json();
-        })
-        .then(data => {
-            displayGifs(data.data);
+    try {
+        const response = await fetch(gifApiUrl);
+        if (!response.ok) throw new Error('Network response was not ok');
+        const data = await response.json();
 
-            document.querySelector('#prevGifs').disabled = page === 0;
-            document.querySelector('#nextGifs').disabled = data.pagination.total_count <= offset + 8;
-        })
-        .catch(error => {
-            gifResults.textContent = 'Failed to load GIFs.';
-        });
+        displayGifs(data.data);
+        document.querySelector('#prevGifs').disabled = page === 0;
+        document.querySelector('#nextGifs').disabled = data.pagination.total_count <= offset + 8;
+    } catch (error) {
+        gifResults.textContent = 'Failed to load GIFs.';
+    }
 }
 
 function displayGifs(gifs) {
@@ -331,9 +319,8 @@ function displayGifs(gifs) {
         <img 
             src="${gif.images.fixed_height.url}" 
             alt="GIF" 
-            class="gif-item ${selectedGifUrl === gif.images.fixed_height.url ? 'selected' : ''}"
+            class="gif-item chat-gif ${selectedGifUrl === gif.images.fixed_height.url ? 'gif-selected' : ''}"
             data-url="${gif.images.fixed_height.url}"
-            style="${selectedGifUrl === gif.images.fixed_height.url ? 'box-shadow: 0 0 0 4px #007BFF;' : ''}"
         >
     `).join('');
 }
@@ -351,7 +338,6 @@ gifResults.addEventListener('click', (e) => {
             });
 
             e.target.classList.add('selected');
-            e.target.style.boxShadow = '0 0 0 4px #007BFF';
             selectedGifUrl = e.target.dataset.url;
         }
     }

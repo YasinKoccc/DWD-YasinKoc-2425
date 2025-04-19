@@ -89,6 +89,14 @@ button:focus {
     align-self: flex-start;
 }
 
+.message img.circle {
+    border-radius: 50%;
+}
+
+.message img.square {
+    border-radius: 0;
+}
+
 .message img[alt="Profile"] {
     margin-top: 0.4em;
 }
@@ -216,6 +224,14 @@ button:hover {
 
 #gifModal.visible {
     display: block;
+}
+
+#gifModalOverlay {
+    display: none;
+}
+
+#gifModalOverlay.show {
+    display: flex;
 }
 
 .modal-close {
@@ -360,6 +376,10 @@ body.modal-open {
 
 .gif-item img:hover {
     transform: scale(1.03);
+}
+
+.gif-selected {
+    box-shadow: 0 0 0 4px #007BFF !important;
 }
 
 .nav-button {
