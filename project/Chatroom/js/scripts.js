@@ -364,7 +364,7 @@ function openGifModal(word) {
     currentSearchQuery = word; // Sla de huidige zoekterm op
 
     // Toon de zoekterm in de UI
-    searchQueryDisplay.innerHTML = `You searched for: <strong>${word}</strong>!`;
+    searchQueryDisplay.innerHTML = `You searched for: '<strong>${word}</strong>' !` ;
 
     // Toon de overlay van de GIF-modal
     gifModalOverlay.style.display = 'flex';
