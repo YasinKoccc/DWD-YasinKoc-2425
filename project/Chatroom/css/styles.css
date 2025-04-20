@@ -29,7 +29,6 @@ textarea {
 input:focus,
 textarea:focus,
 button:focus {
-    outline: 2px solid #007bff;
     outline-offset: 2px;
 }
 
