@@ -94,6 +94,7 @@ modalEmailInput.addEventListener('input', () => {
 // De gegenereerde URL toont een profielfoto als het e-mailadres geregistreerd is bij Gravatar,
 // of een standaardafbeelding ('retro') als dat niet het geval is.
 // Gebaseerd op: https://stackoverflow.com/questions/14733374/how-to-generate-an-md5-hash-from-a-string-in-javascript-node-js
+// Gebaseerd op: https://docs.gravatar.com/api/avatars/hash/
 function getGravatarUrl(email) {
     const hash = md5(email.trim().toLowerCase());
     return `https://www.gravatar.com/avatar/${hash}?d=retro&s=100`;
@@ -157,7 +158,7 @@ function handleGifSelection(gifUrl) {
 // Voegt het gegenereerde bericht toe aan de chat en slaat het op in localStorage
 function addMessageToChat(messageHTML, message) {
     const chatMessages = document.querySelector('.chat-messages');
-    
+
     // Voeg het bericht toe aan de bestaande chatinhoud
     chatMessages.innerHTML += messageHTML;
 
@@ -341,7 +342,7 @@ function toggleTheme() {
     document.body.classList.toggle('dark-mode');
 
     // Sla huidige thema op in localStorage
-    localStorage.setItem('theme', 
+    localStorage.setItem('theme',
         document.body.classList.contains('dark-mode') ? 'dark' : 'light');
 
     // Werk de knop bij
