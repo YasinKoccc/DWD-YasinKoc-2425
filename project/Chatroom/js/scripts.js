@@ -5,7 +5,6 @@ const chatMessages = document.querySelector('#chatMessages');
 const gifButton = document.querySelector('#gifButton');
 const gifModal = document.querySelector('#gifModal');
 const gifResults = document.querySelector('#gifResults');
-const modalClose = document.querySelector('#modalClose');
 const modalEmailInput = document.querySelector('#modalEmail');
 const modalEmailError = document.querySelector('#modalEmailError');
 const themeToggle = document.querySelector('#themeToggle');
@@ -74,9 +73,10 @@ modalEmailInput.addEventListener('input', () => {
 });
 
 function getGravatarUrl(email) {
-    const emailHash = email.trim().toLowerCase();
-    return `https://www.gravatar.com/avatar/${emailHash}?d=retro&s=100`;
+    const hash = md5(email.trim().toLowerCase());
+    return `https://www.gravatar.com/avatar/${hash}?d=retro&s=100`;
 }
+
 
 function handleGifSelection(gifUrl) {
     const email = modalEmailInput.value.trim();
@@ -431,7 +431,6 @@ chatMessages.addEventListener('dblclick', (event) => {
 
 initializeTheme();
 themeToggle.addEventListener('click', toggleTheme);
-modalClose.addEventListener('click', hideModal);
 
 document.querySelector('#gifModalOverlay').addEventListener('click', (e) => {
     if (e.target === document.querySelector('#gifModalOverlay')) {
